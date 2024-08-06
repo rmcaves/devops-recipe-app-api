@@ -7,17 +7,17 @@ terraform {
   }
 
   backend "s3" {
-    bucket               = "devops-recipe-app-api-state"
+    bucket               = "rmc-devops-recipe-tf"
     key                  = "tf-state-deploy"
     workspace_key_prefix = "tf-state-deploy-env"
-    region               = "us-east-1"
+    region               = "us-west-2"
     encrypt              = true
-    dynamodb_table       = "devops-recipe-app-api-tf-lock"
+    dynamodb_table       = "rmc-devops-recipe-tf"
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-2"
   default_tags {
     tags = {
       Environment = terraform.workspace
